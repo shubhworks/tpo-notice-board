@@ -16,10 +16,10 @@ export const sendOtp = async (to: string, otpGenerated: string): Promise<boolean
         const mailOptions = {
             from: OTP_SENDERMAIL,
             to,
-            subject: "PrepNerdz | Email Verification OTP",
+            subject: "Training & Placement Office Notice Board | Email Verification OTP",
             text: `Dear User,
 
-                Thank you for signing up with PrepNerdz!
+                Thank you for signing up with Training & Placement Office Notice Board!
 
                 Your One-Time Password (OTP) for verifying your email address is:
 
@@ -30,7 +30,7 @@ export const sendOtp = async (to: string, otpGenerated: string): Promise<boolean
                 Note: This OTP is valid for a limited time and should not be shared with anyone.
 
                 Best regards,  
-                Team PrepNerdz`
+                TPO Cell, GGITS`
         };
 
         await transporter.sendMail(mailOptions);
@@ -40,43 +40,6 @@ export const sendOtp = async (to: string, otpGenerated: string): Promise<boolean
         return false;
     }
 };
-
-// export const sendOtp = async (to: string, otpGenerated: string) => {
-//     const inServerGeneratedOtp = otpGenerated;
-
-//     // const mailOptions = {
-//     //     from: OTP_SENDERMAIL,
-//     //     to,
-//     //     subject: "PrepNerdz Email Verification",
-//     //     text: `HERE IS YOUR OTP: ${inServerGeneratedOtp} FOR PREPNERDZ ACCOUNT VERIFICATION`,
-//     // };
-
-//     const mailOptions = {
-//         from: OTP_SENDERMAIL,
-//         to,
-//         subject: "PrepNerdz | Email Verification OTP",
-//         text: `Dear User,
-
-//             Thank you for signing up with PrepNerdz!
-
-//             Your One-Time Password (OTP) for verifying your email address is:
-
-//             ${inServerGeneratedOtp}
-
-//             Please enter this OTP on the verification screen to complete your registration. 
-
-//             Note: This OTP is valid for a limited time and should not be shared with anyone.
-
-//             If you did not request this, please ignore this email.
-
-//             Best regards,  
-//             Team PrepNerdz  
-//             business.prepnerdz@gmail.com`
-//     };
-
-//     await transporter.sendMail(mailOptions);
-// };
-
 
 export const FINAL_MAIL_VERIFICATION = async (otpEntered: string, mail: string, res: Response) => {
     const user = await prisma.user.findFirst({
